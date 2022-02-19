@@ -15,8 +15,8 @@ function App() {
         <Header setBusca={setBusca}/>
             <Routes>
                 <Route exact path="/" element={<Home busca={busca}/>}></Route>
-                <Route path="/:slug" element={<Home categoria="/:slug"/>}></Route>
-                <Route path="/:slug/:slug" element={<Post slug=":slug"/>}></Route>
+                <Route path="/:slug" element={<Home/>}></Route>
+                <Route path="/:slug_categoria/:slug" element={<Post/>}></Route>
             </Routes>
         <Footer/>
     </Router>
