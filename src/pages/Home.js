@@ -3,6 +3,11 @@ import {useState, useEffect} from "react";
 import axios from "axios";
 
 function Home(){
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        axios.get();
+    });
+
     return(
         <main>
             <section style={styles.posts}>
