@@ -8,7 +8,7 @@ if(isset($_GET['posts'])){
         $sql = MySql::connect()->prepare("SELECT * FROM `tb_posts`");
         $sql->execute();
         $data = $sql->fetchAll();
-        echo json_encode($data);
+        die(json_encode($data));
     }
 }else{
     die("Requisição rejeitada");
