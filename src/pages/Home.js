@@ -2,12 +2,19 @@ import PostSingle from "../components/PostSingle";
 import {useState, useEffect} from "react";
 import axios from "axios";
 
-function Home(){
+function Home(props){
     const [posts, setPosts] = useState([]);
+
     useEffect(() => {
-        axios.get("http://10.0.0.103/reactjs/api/get_posts.php?posts=true").
-            then(res => setPosts(res.data))
-    });
+        if(props.busca == ""){
+            axios.get("http://10.0.0.103/reactjs/api/get_posts.php?posts=true").
+                then(res => setPosts(res.data))    
+        }else{
+            console.log("buscou");
+            axios.get("http://10.0.0.103/reactjs/api/get_posts.php?posts=true&busca="+props.busca).
+                then(res => setPosts(res.data))
+        }
+    }, [props.busca]);
 
     return(
         <main>
@@ -15,8 +22,9 @@ function Home(){
                 <div style={styles.container}>
                     {
                         posts.map(val => {
+                            let slug = val.slug_categoria + "/" + val.slug;
                             return(
-                                <PostSingle title={val.titulo} description={val.descricao} image={val.imagem} slug={val.slug}/>
+                                <PostSingle title={val.titulo} description={val.descricao} image={val.imagem} slug={slug}/>
                             ) 
                         })
                     }

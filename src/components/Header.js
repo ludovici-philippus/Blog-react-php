@@ -10,7 +10,7 @@ function Header(props){
             <div className={styles.header__logo}>
                 <Link to="/">Blog</Link> 
             </div>
-            <HeaderContent/>
+            <HeaderContent setBusca={props.setBusca}/>
         </header>
     );
 }
