@@ -1,7 +1,8 @@
 <?php 
 header('Access-Control-Allow-Origin: *');
 if(isset($_GET['posts'])){
-    if($_GET['categoria']){
+    require("./config.php");
+    if(isset($_GET['categoria'])){
         die("W.I.P");
     }else{
         $sql = MySql::connect()->prepare("SELECT * FROM `tb_posts`");
